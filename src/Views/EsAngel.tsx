@@ -2,21 +2,33 @@ import React from 'react'
 import { Box } from '@mui/system'
 import { motion } from 'framer-motion'
 
-const EsAngel = () => {
+interface props {
+  position: number
+}
+
+const EsAngel: React.FC<props> = ({ position }) => {
   return (
-    <Box sx={{ width: '100%', height: '100%' }}>
+    <Box
+      sx={{
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        top: '400px',
+        left: '50px',
+      }}
+    >
       <motion.div
         animate={{
-          scale: [1, 2, 2, 1, 1],
-          rotate: [0, 0, 360, 360, 0],
-          borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+          rotate: [position, position + 360],
           transition: {
-            duration: 10,
-            yoyo: Infinity,
+            duration: 7,
+            ease: 'linear',
+            repeat: Infinity,
+            repeatType: 'loop',
           },
         }}
       >
-        <img src="images/ESangel.png" alt="" width={'20%'} height={'20%'} />
+        <img src="images/ESangel.png" alt="" width={'15%'} height={'15%'} />
       </motion.div>
     </Box>
   )
